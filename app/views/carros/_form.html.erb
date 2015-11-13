@@ -1,0 +1,48 @@
+<%= form_for(@carros, :html => { :multipart => true }) do |f| %>
+  <% if @carros.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@carro.errors.count, "error") %> Este carro está proibido de ser salvo: </h2>
+      <ul>
+      <% @carro.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :cor %><br>
+    <%= f.text_field :cor %>
+  </div>
+  <div class="field">
+    <%= f.label :descricao %><br>
+    <%= f.text_field :descricao %>
+  </div>
+  <div class="field">
+    <%= f.label :ano %><br>
+    <%= f.text_field :ano %>
+  </div>
+	
+  <div class="field">
+    <%= f.label :cover %><br>
+    <%= f.file_field :cover %>
+  </div>
+	
+	
+	
+	
+	
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+	
+	
+	<div class="field">
+	<%= f.label :image %><br />
+	<%= f.file_field :image %>
+	</div>
+<% end %>

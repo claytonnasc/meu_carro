@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<h1>Relatório</h1>
+
+<table>	
+	<%= image_tag @carros.cover.url(:thumb)%>
+  <thead>
+    <tr>
+      <th class="text-center">Nome</th>
+      <th class="text-center">Cor</th>
+      <th class="text-center">Descrição</th>
+      <th class="text-center">Ano</th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @carros.each do |carro| %>
+  	<tr>
+    	<td scope="row" class="text-center"><%= carro.nome %></td> 
+    	<td scope="row" class="text-center"><%= carro.cor %></td> 
+    	<td scope="row" class="text-center"><%= carro.descricao %></td> 
+			<td scope="row" class="text-center"><%= carro.ano %></td> 
+			<td><%#= image_tag(carro.image.url(:thumb)) %></td>
+      <td class="text-center">
+    		<%= link_to 'Visualizar', carro %>
+    		<%= link_to 'Excluir', { action: :destroy, id: carro.id }, method: :delete, data: { confirm: 'Confirma a exclusão do carro?' } %>				
+        <%= link_to("Editar", edit_carro_path(carro.id), :class => 'action') %>
+			</td>
+  	</tr>
+		<% end %>
+	</tbody>
+</table>
+<br>
+
+<%= link_to 'Novo Carro', new_carro_path %>
